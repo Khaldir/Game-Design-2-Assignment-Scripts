@@ -9,6 +9,7 @@ public class CreateClone : MonoBehaviour {
 	
 	void OnMouseDown() 
 	{
-		Instantiate(prefab, Vector3.zero, Quaternion.identity);
+		Instantiate(prefab);
+		//, Vector3.zero, Quaternion.identity
 	}
 }

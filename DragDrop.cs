@@ -28,13 +28,19 @@ public class DragDrop : MonoBehaviour
 		GridPosition[0] = Convert.ToSingle(RoundToHalf(transform.position[0]));
 		if (tall)
 		{
-			GridPosition[1] = Convert.ToSingle(RoundToHalf(transform.position[1]))-0.5f;
+			double modifiedNumber = Convert.ToDouble(transform.position[1]);
+			GridPosition[1] = Convert.ToSingle(Math.Round(modifiedNumber,0));
+			//GridPosition[1] = Convert.ToSingle(RoundToHalf(transform.position[1]+0.5f));
 		}
 		else GridPosition[1] = Convert.ToSingle(RoundToHalf(transform.position[1]));
 		GridPosition[2] = Convert.ToSingle(RoundToHalf(transform.position[2]));
 		transform.position = GridPosition;
 		TestRoute.MapObject(gameObject);
-		TestRoute.FindCoordinates(gameObject);
+		if (tall)
+		{
+			TestRoute.MapObject(gameObject, true);
+		}
+		//TestRoute.FindCoordinates(gameObject);
 	}
 	
 	double RoundToHalf(float number)
